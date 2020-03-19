@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+     "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+     "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
+
+<suppressions>
+<!--
+      Turn off all checks for Generated and Test code. Fixes issues with using
+      Eclipse plug-in.
+      -->
+    <suppress checks="." files=".*[\\/]gensrc[\\/][a-zA-Z\\/]*\.java"/>
+    <suppress checks="HiddenField" files=".*Builder\.java"/>
+    <suppress checks="EmptyBlock" files=".*wsclient[\\/]decoder[\\/]ResponseException.java"/>
+    <!--<suppress checks="." files=".*[\\/]testsrc[\\/][a-zA-Z\\/]*\.java"/>-->
+</suppressions>

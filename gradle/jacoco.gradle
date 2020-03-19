@@ -1,0 +1,78 @@
+apply plugin: 'jacoco'
+
+tasks.withType(JacocoCoverageVerification) {
+    // can set general rules here
+}
+
+// see here for how to set test coverage rules
+// http://www.eclemma.org/jacoco/trunk/doc/check-mojo.html
+jacocoTestCoverageVerification {
+    description = 'Verifies jacoco test coverage'
+    violationRules {
+        // This rule checks the covered ratio of instructions in the bundle
+        rule {
+            limit {
+                minimum = 0.7
+            }
+        }
+        // This rule checks the covered ratio of branches in the bundle
+        rule {
+            limit {
+                counter = 'BRANCH'
+                minimum = 0.6
+            }
+        }
+
+        // This rule checks that every class should have a unit test
+        rule {
+            enabled = false
+            limit {
+                counter = 'CLASS'
+                value = 'MISSEDCOUNT'
+                maximum = 0
+            }
+        }
+
+        // This rule checks the missed ratio for methods
+        rule {
+            enabled = false
+            limit {
+                counter = 'METHOD'
+                value = 'MISSEDRATIO'
+                maximum = 0.25
+            }
+        }
+
+        // These rules check that on per-package basis the minimum coverage
+        rule {
+            enabled = false
+            element = 'PACKAGE'
+            includes = ['org.awong.ftgo.redemption']
+            excludes = ['org.awong.ftgo.promotion.redemption.config',
+                        'org.awong.ftgo.promotion.redemption.aop.logging',
+                        'org.awong.ftgo.promotion.redemption.web.rest.vm',
+                        'org.awong.ftgo.promotion.redemption.domain']
+
+            limit {
+                value = 'COVEREDRATIO'
+                minimum = 0.5
+            }
+        }
+    }
+}
+
+// See https://issues.gradle.org/browse/GRADLE-2955
+// This can explain why the report is out of step with the exclusion pattern
+jacocoTestReport {
+    description = 'Generates a HTML report after executing jacoco coverage checks.'
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination file("${buildDir}/reports/jacocoHtml")
+    }
+    doLast {
+        logger.quiet("FINISHED: jacocoTestReport task. See file://${buildDir}/reports/jacocoHtml/index.html")
+    }
+}
+
+jacocoTestCoverageVerification.finalizedBy(jacocoTestReport)
