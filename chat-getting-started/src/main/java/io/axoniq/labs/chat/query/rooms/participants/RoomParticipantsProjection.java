@@ -3,11 +3,12 @@ package io.axoniq.labs.chat.query.rooms.participants;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoomParticipantsProjection {
-
+public class RoomParticipantsProjection
+{
     private final RoomParticipantsRepository repository;
 
-    public RoomParticipantsProjection(RoomParticipantsRepository repository) {
+    public RoomParticipantsProjection(final RoomParticipantsRepository repository)
+    {
         this.repository = repository;
     }
 

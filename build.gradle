@@ -14,7 +14,6 @@ group = 'io.axoniq.labs'
 version = '0.0.1-SNAPSHOT'
 description 'AxonIQ Getting Started - Chat application'
 
-
 subprojects {
     apply plugin: "java"
     apply plugin: "java-library"
@@ -46,10 +45,9 @@ subprojects {
         }
     }
 
-    apply from: "${rootDir}/gradle/pmd.gradle"
+    // apply from: "${rootDir}/gradle/pmd.gradle"
     apply from: "${rootDir}/gradle/checkstyle.gradle"
     apply from: "${rootDir}/gradle/jacoco.gradle"
-
 
     dependencies {
         compile "javax.money:money-api:$javaxMoneyApiVersion"

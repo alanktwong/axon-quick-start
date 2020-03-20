@@ -4,38 +4,47 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class RoomSummary {
-
+public class RoomSummary
+{
     @Id
     private String roomId;
+
     private String name;
+
     private int participants;
 
-    public RoomSummary() {
+    public RoomSummary()
+    {
     }
 
-    public RoomSummary(String roomId, String name) {
+    public RoomSummary(final String roomId, final String name)
+    {
         this.roomId = roomId;
         this.name = name;
     }
 
-    public String getRoomId() {
+    public String getRoomId()
+    {
         return roomId;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void addParticipant() {
+    public void addParticipant()
+    {
         this.participants++;
     }
 
-    public void removeParticipant() {
+    public void removeParticipant()
+    {
         this.participants--;
     }
 
-    public int getParticipants() {
+    public int getParticipants()
+    {
         return participants;
     }
 }
