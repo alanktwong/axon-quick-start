@@ -1,4 +1,3 @@
-
 group = 'io.axoniq.labs'
 version = '0.0.1-SNAPSHOT'
 description 'AxonIQ Getting Started - Chat application'
@@ -6,9 +5,9 @@ description 'AxonIQ Getting Started - Chat application'
 dependencies {
     implementation "org.axonframework:axon-spring-boot-starter:$axonVersion"
     runtimeOnly "com.h2database:h2:$h2Version"
-    implementation "io.projectreactor:reactor-core:${projectReactorVersion}"
+    implementation "io.projectreactor:reactor-core:$projectReactorVersion"
 
     testImplementation "org.axonframework:axon-test:$axonVersion"
-    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 }
 

@@ -46,18 +46,18 @@ subprojects {
     }
 
     // apply from: "${rootDir}/gradle/pmd.gradle"
-    apply from: "${rootDir}/gradle/checkstyle.gradle"
-    apply from: "${rootDir}/gradle/jacoco.gradle"
+    apply from: "$rootDir/gradle/checkstyle.gradle"
+    apply from: "$rootDir/gradle/jacoco.gradle"
 
     dependencies {
         compile "javax.money:money-api:$javaxMoneyApiVersion"
-        compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
+        compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
-        implementation "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-starter-freemarker:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-parent:$springBootVersion"
+        implementation "org.springframework.boot:spring-boot-starter-freemarker:$springBootVersion"
+        implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
 
         implementation "io.springfox:springfox-swagger2:$springFoxVersion"
         implementation "io.springfox:springfox-swagger-ui:$springFoxVersion"
@@ -71,17 +71,18 @@ subprojects {
         implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
         implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
         implementation "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
+        runtimeOnly "com.h2database:h2:$h2Version"
 
-        testCompile "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}"
+        testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
 
-        testImplementation "io.qala.datagen:qala-datagen:${datagenVersion}"
-        testImplementation "io.qala.datagen:qala-datagen-java8types:${datagenVersion}"
+        testImplementation "io.qala.datagen:qala-datagen:$datagenVersion"
+        testImplementation "io.qala.datagen:qala-datagen-java8types:$datagenVersion"
         // testImplementation "io.kotest:kotest-runner-junit5:3.4.2"
-        // testImplementation "org.spekframework.spek2:spek-dsl-jvm:${spekVersion}"
+        // testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spekVersion"
 
         // spek requires kotlin-reflect, can be omitted if already in the classpath
         // testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:${spek_version}"
-        testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
+        testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
         testImplementation "org.assertj:assertj-core:$assertjVersion"
         testImplementation "org.mockito:mockito-core:$mockitoVersion"
@@ -89,5 +90,5 @@ subprojects {
 }
 
 wrapper {
-    gradleVersion = "${gradleVersion}"
+    gradleVersion = "$gradleVersion"
 }
