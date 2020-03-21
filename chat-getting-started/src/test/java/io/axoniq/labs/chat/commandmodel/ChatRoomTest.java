@@ -17,13 +17,13 @@ public class ChatRoomTest
     private AggregateTestFixture<ChatRoom> testFixture;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         testFixture = new AggregateTestFixture<>(ChatRoom.class);
     }
 
     @Test
-    public void testCreateChatRoom() throws Exception
+    public void testCreateChatRoom()
     {
         testFixture.givenNoPriorActivity()
             .when(new CreateRoomCommand("roomId", "testroom"))
@@ -31,7 +31,7 @@ public class ChatRoomTest
     }
 
     @Test
-    public void testJoinChatRoom() throws Exception
+    public void testJoinChatRoom()
     {
         testFixture.given(new RoomCreatedEvent("roomId", "testroom"))
             .when(new JoinRoomCommand("participant", "roomId"))
@@ -39,7 +39,7 @@ public class ChatRoomTest
     }
 
     @Test
-    public void testPostMessage() throws Exception
+    public void testPostMessage()
     {
         testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
             new ParticipantJoinedRoomEvent("participant", "roomId"))
@@ -48,7 +48,7 @@ public class ChatRoomTest
     }
 
     @Test
-    public void testCannotJoinChatRoomTwice() throws Exception
+    public void testCannotJoinChatRoomTwice()
     {
         testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
             new ParticipantJoinedRoomEvent("participant", "roomId"))
@@ -58,7 +58,7 @@ public class ChatRoomTest
     }
 
     @Test
-    public void testCannotLeaveChatRoomTwice() throws Exception
+    public void testCannotLeaveChatRoomTwice()
     {
         testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
             new ParticipantJoinedRoomEvent("participant", "roomId"),
@@ -69,7 +69,7 @@ public class ChatRoomTest
     }
 
     @Test
-    public void testParticipantCannotPostMessagesOnceHeLeftTheRoom() throws Exception
+    public void testParticipantCannotPostMessagesOnceHeLeftTheRoom()
     {
         testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
             new ParticipantJoinedRoomEvent("participant", "roomId"),
