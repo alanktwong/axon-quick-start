@@ -1,6 +1,8 @@
 package io.axoniq.labs.chat;
 
 import com.google.common.base.Predicates;
+import org.axonframework.queryhandling.QueryUpdateEmitter;
+import org.axonframework.queryhandling.SimpleQueryUpdateEmitter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -31,6 +33,16 @@ public class ChatGettingStartedApplication
                 .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework")))
                 .paths(PathSelectors.any())
                 .build();
+        }
+    }
+
+    @Configuration
+    public static class OtherConfig
+    {
+        @Bean
+        public QueryUpdateEmitter updateEmitter()
+        {
+            return SimpleQueryUpdateEmitter.builder().build();
         }
     }
 }

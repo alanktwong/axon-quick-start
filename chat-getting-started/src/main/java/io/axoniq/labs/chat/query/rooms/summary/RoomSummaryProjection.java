@@ -37,7 +37,7 @@ public class RoomSummaryProjection
     public List<RoomSummary> handle(final AllRoomsQuery query)
     {
         checkNotNull(query);
-        return roomSummaryRepository.findAllById(query.getRoomIds());
+        return roomSummaryRepository.findAll();
     }
 
     @QueryHandler
